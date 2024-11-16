@@ -206,12 +206,14 @@ class CTR {
   constructor(password, number_of_bits) {
     if (!(number_of_bits == 128 || number_of_bits == 192 || number_of_bits == 256)) throw new Error("Expected 128, 192 or 256 bits");
 
-    this.password = String(password).utf8Encode();
+    //this.password = String(password).utf8Encode();
+    this.password = String(password);
     this.number_of_bits = number_of_bits;
   }
 
   encrypt(plaintext) {
-    plaintext = String(plaintext).utf8Encode();
+    //plaintext = String(plaintext).utf8Encode();
+    plaintext = String(plaintext);
 
     let number_of_bytes = this.number_of_bits / 8;
     let pw_bytes = new Array(number_of_bytes);
@@ -305,7 +307,8 @@ class CTR {
       plaintxt[b] = plaintxt_byte.join('');
     }
 
-    return plaintxt.join('').utf8Decode();
+    //return plaintxt.join('').utf8Decode();
+    return plaintxt.join('');
   }
 }
 
